@@ -1,24 +1,23 @@
 package service
 
-import "github.com/dzgntutar/ccgin/models"
+import (
+	"fmt"
+
+	"github.com/dzgntutar/ccgin/repository"
+)
 
 type IStudentService interface {
-	GetAll() ([]models.Student, error)
-	Insert(student models.Student) error
-	GetById(id int32) (models.Student, error)
+	GetAll()
+	// Insert(student models.Student) error
+	// GetById(id int32) (models.Student, error)
 }
 
 type StudentService struct {
+	StudentRepository repository.IStudentRepository
 }
 
-func GetAll() {
+func (s StudentService) GetAll() {
+	fmt.Println("StudentService --> GetAll")
 
-}
-
-func Insert(student models.Student) {
-
-}
-
-func GetById(id int32) {
-
+	s.StudentRepository.GetAll()
 }
