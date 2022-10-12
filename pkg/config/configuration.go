@@ -2,11 +2,11 @@ package config
 
 import "github.com/spf13/viper"
 
-var Config Configuraiton
+var Config *Configuraiton
 
 type Configuraiton struct {
-	Database DatabaseConfig
-	Server   ServerConfig
+	Database *DatabaseConfig
+	Web      *WebConfig
 }
 
 func Init() error {
@@ -17,19 +17,17 @@ func Init() error {
 	viper.AddConfigPath(".")
 
 	if err := viper.ReadInConfig(); err != nil {
-		//log
 		return err
 	}
 
 	if err := viper.Unmarshal(&configuration); err != nil {
-		//log
 		return err
 	}
 
-	Config = configuration
+	Config = &configuration
 	return nil
 }
 
-func GetGlobalConfig() Configuraiton {
+func GetGlobalConfig() *Configuraiton {
 	return Config
 }

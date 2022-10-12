@@ -8,12 +8,12 @@ import (
 )
 
 type StudentController struct {
-	StudentService service.IStudentService
+	Service service.IStudentService
 }
 
-func (controller StudentController) GetAll(c *gin.Context) {
+func (c StudentController) GetAll(context *gin.Context) {
 	fmt.Println("StudentController --> GetAll")
-	controller.StudentService.GetAll()
+	c.Service.GetAll()
 }
 
 // func (controller StudentController) GetById(c *gin.Context) {

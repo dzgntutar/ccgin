@@ -5,6 +5,6 @@ type DatabaseConfig struct {
 	Dbname   string
 	User     string
 	Password string
-	Host     string
+	Server   string
 	Port     string
 }

@@ -1,13 +1,17 @@
 package repository
 
-import "fmt"
+import (
+	"fmt"
+
+	"gorm.io/gorm"
+)
 
 type IStudentRepository interface {
 	GetAll()
 }
 
 type StudentRepository struct {
-	Db string
+	Db *gorm.DB
 }
 
 func (r StudentRepository) GetAll() {

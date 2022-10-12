@@ -10,27 +10,17 @@ import (
 func Init() *gin.Engine {
 	r := gin.Default()
 
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-
-	sRepository := repository.StudentRepository{
-		Db: "MyDb",
+	studentR := repository.StudentRepository{}
+	studentS := service.StudentService{
+		Repository: studentR,
 	}
-	sService := service.StudentService{
-		StudentRepository: sRepository,
-	}
-	sController := controller.StudentController{
-		StudentService: sService,
+	studentC := controller.StudentController{
+		Service: studentS,
 	}
 
 	student := r.Group("/student")
 	{
-		student.GET("/", sController.GetAll)
-		//student.GET("/:id", controller.GetById)
-		//student.POST("/", controller.Create)
+		student.GET("/", studentC.GetAll)
 	}
 
 	return r
