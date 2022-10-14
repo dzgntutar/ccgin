@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/dzgntutar/ccgin/models"
-	"gorm.io/driver/sqlite"
+	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +13,7 @@ var (
 )
 
 func Init() error {
-	db, err := gorm.Open(sqlite.Open("ugin.db"))
+	db, err := gorm.Open(sqlite.Open("myDatabase.db"), &gorm.Config{})
 
 	if err != nil {
 		fmt.Println(err)
@@ -21,6 +21,8 @@ func Init() error {
 	}
 
 	db.AutoMigrate(&models.Student{})
+
+	DB = db
 
 	return nil
 }

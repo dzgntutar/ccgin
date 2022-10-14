@@ -12,7 +12,8 @@ type StudentController struct {
 }
 
 func (c StudentController) GetAll(context *gin.Context) {
-	fmt.Println("StudentController --> GetAll")
+	fmt.Println("StudentController-GetAll -->", c.Service)
+	fmt.Println()
 	c.Service.GetAll()
 }
 

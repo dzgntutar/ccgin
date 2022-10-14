@@ -15,7 +15,7 @@ type StudentService struct {
 }
 
 func (s StudentService) GetAll() {
-	fmt.Println("StudentService --> GetAll")
-
+	fmt.Println("StudentService-GetAll -->", s.Repository)
+	fmt.Println()
 	s.Repository.GetAll()
 }
