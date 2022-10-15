@@ -9,10 +9,6 @@ import (
 )
 
 func Init(db *gorm.DB) *gin.Engine {
-	// fmt.Println()
-	// fmt.Println("router-Init -->", db)
-	// fmt.Println()
-
 	r := gin.Default()
 
 	studentR := repository.StudentRepository{

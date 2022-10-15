@@ -1,8 +1,6 @@
 package repository
 
 import (
-	"fmt"
-
 	"github.com/dzgntutar/ccgin/models"
 	"gorm.io/gorm"
 )
@@ -12,29 +10,21 @@ type StudentRepository struct {
 }
 
 func (r StudentRepository) GetAll() ([]models.Student, error) {
-	// fmt.Println()
-	// fmt.Println("Student Repository --> GetAll")
-	// fmt.Println("Student Repository ::", r.Db)
-	// fmt.Println()
-
 	students := []models.Student{}
 
 	query := r.Db.Select("students.*")
 
 	if err := query.Find(&students).Error; err != nil {
-		fmt.Println("Hata Repository-GetAll -->", err)
+		return students, err
 	}
-
-	// fmt.Println()
-	// fmt.Println(students)
-	// fmt.Println()
 
 	return students, nil
 }
 
-func (r StudentRepository) Create(student models.Student) {
+func (r StudentRepository) Create(student models.Student) error {
 
 	if err := r.Db.Save(&student).Error; err != nil {
-		fmt.Println("Hata Repository-Create", err)
+		return err
 	}
+	return nil
 }

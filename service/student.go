@@ -10,13 +10,9 @@ type StudentService struct {
 }
 
 func (s StudentService) GetAll() ([]models.Student, error) {
-	// fmt.Println()
-	// fmt.Println("StudentService-GetAll -->", s.Repository)
-	// fmt.Println()
-
 	return s.Repository.GetAll()
 }
 
-func (s StudentService) Create(student models.Student) {
-	s.Repository.Create(student)
+func (s StudentService) Create(student models.Student) error {
+	return s.Repository.Create(student)
 }

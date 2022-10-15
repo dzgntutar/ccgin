@@ -2,5 +2,5 @@ package service
 
 type IService[T any] interface {
 	GetAll() ([]T, error)
-	Create(t T)
+	Create(t T) error
 }

@@ -11,10 +11,6 @@ type StudentController struct {
 }
 
 func (c StudentController) GetAll(context *gin.Context) {
-	// fmt.Println()
-	// fmt.Println("StudentController-GetAll -->", c.Service)
-	// fmt.Println()
-
 	if err, studentList := c.Service.GetAll(); err != nil {
 		context.JSON(400, err)
 	} else {
@@ -25,13 +21,12 @@ func (c StudentController) GetAll(context *gin.Context) {
 func (c StudentController) Create(context *gin.Context) {
 	student := models.Student{}
 
-	err := context.ShouldBindJSON(&student)
-	if err != nil {
+	if err := context.ShouldBindJSON(&student); err != nil {
 		context.AbortWithStatus(400)
-		return
 	}
 
-	//fmt.Println("--> ", student)
-
-	c.Service.Create(student)
+	if err := c.Service.Create(student); err != nil {
+		context.AbortWithStatus(400)
+	}
+	context.Status(200)
 }
