@@ -8,7 +8,7 @@ import (
 )
 
 type IStudentService interface {
-	GetAll() (error, []models.Student)
+	GetAll() ([]models.Student, error)
 	Create()
 }
 
@@ -16,7 +16,7 @@ type StudentService struct {
 	Repository repository.IStudentRepository
 }
 
-func (s StudentService) GetAll() (error, []models.Student) {
+func (s StudentService) GetAll() ([]models.Student, error) {
 	fmt.Println()
 	fmt.Println("StudentService-GetAll -->", s.Repository)
 	fmt.Println()
