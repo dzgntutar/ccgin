@@ -8,7 +8,7 @@ import (
 )
 
 type IStudentRepository interface {
-	GetAll()
+	GetAll() (error, []models.Student)
 	Create()
 }
 
@@ -16,7 +16,7 @@ type StudentRepository struct {
 	Db *gorm.DB
 }
 
-func (r StudentRepository) GetAll() {
+func (r StudentRepository) GetAll() (error, []models.Student) {
 	fmt.Println()
 	fmt.Println("Student Repository --> GetAll")
 	fmt.Println("Student Repository ::", r.Db)
@@ -30,7 +30,12 @@ func (r StudentRepository) GetAll() {
 		fmt.Println("Hata Repository-GetAll -->", err)
 	}
 
+	fmt.Println()
 	fmt.Println(students)
+	fmt.Println()
+
+	return nil, students
+
 }
 
 func (r StudentRepository) Create() {

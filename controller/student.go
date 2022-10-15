@@ -16,7 +16,12 @@ func (c StudentController) GetAll(context *gin.Context) {
 	fmt.Println("StudentController-GetAll -->", c.Service)
 	fmt.Println()
 
-	c.Service.GetAll()
+	if err, studentList := c.Service.GetAll(); err != nil {
+		context.JSON(400, err)
+	} else {
+		context.JSON(200, studentList)
+	}
+
 }
 
 func (c StudentController) Create(context *gin.Context) {

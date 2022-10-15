@@ -3,11 +3,12 @@ package service
 import (
 	"fmt"
 
+	"github.com/dzgntutar/ccgin/models"
 	"github.com/dzgntutar/ccgin/repository"
 )
 
 type IStudentService interface {
-	GetAll()
+	GetAll() (error, []models.Student)
 	Create()
 }
 
@@ -15,12 +16,12 @@ type StudentService struct {
 	Repository repository.IStudentRepository
 }
 
-func (s StudentService) GetAll() {
+func (s StudentService) GetAll() (error, []models.Student) {
 	fmt.Println()
 	fmt.Println("StudentService-GetAll -->", s.Repository)
 	fmt.Println()
 
-	s.Repository.GetAll()
+	return s.Repository.GetAll()
 }
 
 func (s StudentService) Create() {
