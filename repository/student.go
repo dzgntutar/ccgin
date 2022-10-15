@@ -7,20 +7,15 @@ import (
 	"gorm.io/gorm"
 )
 
-type IStudentRepository interface {
-	GetAll() ([]models.Student, error)
-	Create()
-}
-
 type StudentRepository struct {
 	Db *gorm.DB
 }
 
 func (r StudentRepository) GetAll() ([]models.Student, error) {
-	fmt.Println()
-	fmt.Println("Student Repository --> GetAll")
-	fmt.Println("Student Repository ::", r.Db)
-	fmt.Println()
+	// fmt.Println()
+	// fmt.Println("Student Repository --> GetAll")
+	// fmt.Println("Student Repository ::", r.Db)
+	// fmt.Println()
 
 	students := []models.Student{}
 
@@ -30,9 +25,9 @@ func (r StudentRepository) GetAll() ([]models.Student, error) {
 		fmt.Println("Hata Repository-GetAll -->", err)
 	}
 
-	fmt.Println()
-	fmt.Println(students)
-	fmt.Println()
+	// fmt.Println()
+	// fmt.Println(students)
+	// fmt.Println()
 
 	return students, nil
 }

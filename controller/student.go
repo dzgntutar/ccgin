@@ -1,20 +1,19 @@
 package controller
 
 import (
-	"fmt"
-
+	"github.com/dzgntutar/ccgin/models"
 	"github.com/dzgntutar/ccgin/service"
 	"github.com/gin-gonic/gin"
 )
 
 type StudentController struct {
-	Service service.IStudentService
+	Service service.IService[models.Student]
 }
 
 func (c StudentController) GetAll(context *gin.Context) {
-	fmt.Println()
-	fmt.Println("StudentController-GetAll -->", c.Service)
-	fmt.Println()
+	// fmt.Println()
+	// fmt.Println("StudentController-GetAll -->", c.Service)
+	// fmt.Println()
 
 	if err, studentList := c.Service.GetAll(); err != nil {
 		context.JSON(400, err)

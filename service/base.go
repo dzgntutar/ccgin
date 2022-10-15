@@ -1,5 +1,6 @@
 package service
 
-type IService interface{
-	
+type IService[T any] interface {
+	GetAll() ([]T, error)
+	Create()
 }
