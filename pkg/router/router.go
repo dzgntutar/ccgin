@@ -1,8 +1,6 @@
 package router
 
 import (
-	"fmt"
-
 	"github.com/dzgntutar/ccgin/controller"
 	"github.com/dzgntutar/ccgin/repository"
 	"github.com/dzgntutar/ccgin/service"
@@ -11,9 +9,9 @@ import (
 )
 
 func Init(db *gorm.DB) *gin.Engine {
-	fmt.Println()
-	fmt.Println("router-Init -->", db)
-	fmt.Println()
+	// fmt.Println()
+	// fmt.Println("router-Init -->", db)
+	// fmt.Println()
 
 	r := gin.Default()
 

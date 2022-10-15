@@ -14,7 +14,6 @@ func main() {
 		//config error
 		fmt.Println("Config Error --> ", err)
 	}
-
 	conf := config.GetGlobalConfig()
 
 	// fmt.Println("Web -->", conf.Web)
@@ -27,12 +26,11 @@ func main() {
 		//db error
 		fmt.Println("Db Error -->", err)
 	}
-
 	db := database.DB
-	fmt.Println("main-Db -->", db)
-	fmt.Println()
+
+	// fmt.Println("main-Db -->", db)
+	// fmt.Println()
 
 	r := router.Init(db)
-
 	r.Run(conf.Web.ServerName + ":" + conf.Web.Port)
 }

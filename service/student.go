@@ -17,6 +17,6 @@ func (s StudentService) GetAll() ([]models.Student, error) {
 	return s.Repository.GetAll()
 }
 
-func (s StudentService) Create() {
-	s.Repository.Create()
+func (s StudentService) Create(student models.Student) {
+	s.Repository.Create(student)
 }

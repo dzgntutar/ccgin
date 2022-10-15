@@ -32,12 +32,8 @@ func (r StudentRepository) GetAll() ([]models.Student, error) {
 	return students, nil
 }
 
-func (r StudentRepository) Create() {
-	student := models.Student{
-		Name:    "Ali",
-		Surname: "Kaya",
-		Age:     35,
-	}
+func (r StudentRepository) Create(student models.Student) {
+
 	if err := r.Db.Save(&student).Error; err != nil {
 		fmt.Println("Hata Repository-Create", err)
 	}

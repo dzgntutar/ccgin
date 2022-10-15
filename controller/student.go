@@ -20,9 +20,18 @@ func (c StudentController) GetAll(context *gin.Context) {
 	} else {
 		context.JSON(200, studentList)
 	}
-
 }
 
 func (c StudentController) Create(context *gin.Context) {
-	c.Service.Create()
+	student := models.Student{}
+
+	err := context.ShouldBindJSON(&student)
+	if err != nil {
+		context.AbortWithStatus(400)
+		return
+	}
+
+	//fmt.Println("--> ", student)
+
+	c.Service.Create(student)
 }
