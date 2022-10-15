@@ -12,15 +12,13 @@ type StudentController struct {
 }
 
 func (c StudentController) GetAll(context *gin.Context) {
+	fmt.Println()
 	fmt.Println("StudentController-GetAll -->", c.Service)
 	fmt.Println()
+
 	c.Service.GetAll()
 }
 
-// func (controller StudentController) GetById(c *gin.Context) {
-// 	controller.service.GetById(1)
-// }
-
-// func (controller StudentController) Create(c *gin.Context) {
-// 	controller.Create(c)
-// }
+func (c StudentController) Create(context *gin.Context) {
+	c.Service.Create()
+}

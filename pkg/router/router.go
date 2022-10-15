@@ -11,7 +11,7 @@ import (
 )
 
 func Init(db *gorm.DB) *gin.Engine {
-
+	fmt.Println()
 	fmt.Println("router-Init -->", db)
 	fmt.Println()
 
@@ -30,6 +30,7 @@ func Init(db *gorm.DB) *gin.Engine {
 	student := r.Group("/student")
 	{
 		student.GET("/", studentC.GetAll)
+		student.POST("/", studentC.Create)
 	}
 
 	return r

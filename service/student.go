@@ -8,6 +8,7 @@ import (
 
 type IStudentService interface {
 	GetAll()
+	Create()
 }
 
 type StudentService struct {
@@ -15,7 +16,13 @@ type StudentService struct {
 }
 
 func (s StudentService) GetAll() {
+	fmt.Println()
 	fmt.Println("StudentService-GetAll -->", s.Repository)
 	fmt.Println()
+
 	s.Repository.GetAll()
+}
+
+func (s StudentService) Create() {
+	s.Repository.Create()
 }

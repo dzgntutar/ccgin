@@ -1,8 +1,10 @@
 package models
 
+import "gorm.io/gorm"
+
 type Student struct {
-	ID      uint   `json:"id" gorm:"index"`
+	gorm.Model
 	Name    string `json:"name" gorm:"type:varchar(255)"`
 	Surname string `json:"surname" gorm:"type:varchar(255)"`
-	Age     int8   `json:"age"`
+	Age     int32  `json:"age"`
 }

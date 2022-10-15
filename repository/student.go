@@ -9,6 +9,7 @@ import (
 
 type IStudentRepository interface {
 	GetAll()
+	Create()
 }
 
 type StudentRepository struct {
@@ -16,17 +17,29 @@ type StudentRepository struct {
 }
 
 func (r StudentRepository) GetAll() {
+	fmt.Println()
 	fmt.Println("Student Repository --> GetAll")
 	fmt.Println("Student Repository ::", r.Db)
 	fmt.Println()
 
 	students := []models.Student{}
 
-	query := r.Db.Select("students")
+	query := r.Db.Select("students.*")
 
-	if err := query.Take(&students).Error; err != nil {
+	if err := query.Find(&students).Error; err != nil {
 		fmt.Println("Hata Repository-GetAll -->", err)
 	}
 
 	fmt.Println(students)
+}
+
+func (r StudentRepository) Create() {
+	student := models.Student{
+		Name:    "Ali",
+		Surname: "Kaya",
+		Age:     35,
+	}
+	if err := r.Db.Save(&student).Error; err != nil {
+		fmt.Println("Hata Repository-Create", err)
+	}
 }
