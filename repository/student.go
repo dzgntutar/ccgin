@@ -9,6 +9,16 @@ type StudentRepository struct {
 	Db *gorm.DB
 }
 
+func (r StudentRepository) GetById(id string) (models.Student, error) {
+	student := new(models.Student)
+
+	if err := r.Db.Where("id = ?", id).First(student).Error; err != nil {
+		return *student, err
+	}
+
+	return *student, nil
+}
+
 func (r StudentRepository) GetAll() ([]models.Student, error) {
 	students := []models.Student{}
 

@@ -18,6 +18,16 @@ func (c StudentController) GetAll(context *gin.Context) {
 	}
 }
 
+func (c StudentController) GetById(context *gin.Context) {
+	id := context.Params.ByName("id")
+
+	if student, err := c.Service.GetById(id); err != nil {
+		context.JSON(400, err)
+	} else {
+		context.JSON(200, student)
+	}
+}
+
 func (c StudentController) Create(context *gin.Context) {
 	student := models.Student{}
 
