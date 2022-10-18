@@ -32,9 +32,18 @@ func (r StudentRepository) GetAll() ([]models.Student, error) {
 }
 
 func (r StudentRepository) Create(student models.Student) error {
-
 	if err := r.Db.Save(&student).Error; err != nil {
 		return err
 	}
+	return nil
+}
+
+func (r StudentRepository) Delete(id string) error {
+	student := new(models.Student)
+
+	if err := r.Db.Where("id = ?", id).Delete(student).Error; err != nil {
+		return err
+	}
+
 	return nil
 }

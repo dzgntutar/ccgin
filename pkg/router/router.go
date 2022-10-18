@@ -26,6 +26,7 @@ func Init(db *gorm.DB) *gin.Engine {
 		student.GET("/", studentC.GetAll)
 		student.POST("/", studentC.Create)
 		student.GET("/:id", studentC.GetById)
+		student.DELETE("/:id",studentC.Delete)
 	}
 
 	return r

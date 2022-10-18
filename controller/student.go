@@ -40,3 +40,13 @@ func (c StudentController) Create(context *gin.Context) {
 	}
 	context.Status(200)
 }
+
+func (c StudentController) Delete(context *gin.Context) {
+	id := context.Params.ByName("id")
+
+	if err := c.Service.Delete(id); err != nil {
+		context.JSON(404, "Student not found.")
+	}
+
+	context.Status(200)
+}
